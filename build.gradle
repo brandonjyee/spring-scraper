@@ -1,0 +1,48 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.RELEASE")
+    }
+}
+
+plugins {
+	id 'io.franzbecker.gradle-lombok' version '1.11'
+	id 'java'
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+bootJar {
+    baseName = 'my-rest-htmlunit-tester'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    annotationProcessor 'org.projectlombok:lombok:1.16.20'
+
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile 'net.sourceforge.htmlunit:htmlunit:2.30'
+    compile 'org.projectlombok:lombok:1.16.20'
+    
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+lombok {
+	version = "1.16.20"
+	sha256 = ""
+}
+
